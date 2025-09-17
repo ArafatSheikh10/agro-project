@@ -1,57 +1,164 @@
 @config "../../tailwind.config.js";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-inter: "Inter", sans-serif;
-  --font-Coming: "Coming Soon", cursive;
-  --font-bitcount: "Bitcount Prop Single", serif;
-  --color-tahiti: red;
-  --color-primary: #FFB400;
+  --font-primary: "Montserrat", sans-serif;
+  --color-dark-primary: #002D1D;
+  --color-primary: #309e00;
+  --color-secondary: #84cc16;
+  --color-third: #222722;
 }
 
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
+/* navbar */
+
+/* preloder */
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* Ensures the background is black */
+  z-index: 9999; /* Makes sure the preloader is on top of everything */
 }
 
-/* এটি নিশ্চিত করবে যে dark-mode অন থাকলে
-সব .bg-white ক্লাস কালো হয়ে যাবে */
-
-body.dark-mode .bg-white {
-  background-color: #1a1a1a !important;
-}
-
-body.dark-mode .bg-white * {
-  color: #ffffff !important;
-}
-
-.responsive_navbar {
-  transition:  0.3s ease-in-out; 
-}
-
-.recommendations-carousel{
+#loader {
+  display: block;
   position: relative;
+  left: 50%;
+  top: 50%;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #9370DB;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
 }
 
-.recommendations-carousel .owl-dots{
-  display: flex !important;
-  justify-content: center;
-  margin-top: 30px;
-  gap: 10px !important;
+#loader:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #BA55D3;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
 }
 
-.recommendations-carousel .owl-dots .owl-dot{
-  width: 10px !important;
-  height: 10px !important;
-  background-color: #FFB400!important;
-  border-radius: 100%;
+#loader:after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: #FF00FF;
+  -webkit-animation: spin 1.5s linear infinite;
+  animation: spin 1.5s linear infinite;
 }
 
-.recommendations-carousel .owl-dots .owl-dot.active{
-  background-color: black !important;
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
-.gllary-filter li.active{
-  color: #FFB400;
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* navbar-bar */
+
+/* navbar-active */
+
+.navigation-bar li a.active{
+  color: #84cc16;
+}
+
+/* custom-fade */
+
+.customize-fade .aos-custom-fade-up {
+  transform: translateY(1px);
+  opacity: 0;
+}
+
+.customize-fade [data-aos='fade-up'] {
+  transform: translateY(1px);
+}
+
+.customize-fade .aos-custom-fade-up-30px {
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.customize-fade .aos-custom-fade-up-30px [data-aos='fade-up'] {
+  transform: translateY(30px);
+}
+
+/* .customize-ha .aos-custom-fade-up-5px [data-aos='fade-up'] {
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+.customize-ha .aos-custom-fade-up-5px [data-aos='fade-up'] {
+  transform: translateY(10px);
+  opacity: 1;
+} */
+
+/* custom-anitaion */
+
+.right-slide-animation {
+  animation: right-slide 1s ease-in-out 1 forwards;
+}
+
+@keyframes right-slide {
+  0% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); 
+    opacity: 1;
+  }
+}
+
+.left-slide-animation {
+  animation: left-slide 1s ease-in-out 1 forwards;
+}
+
+@keyframes left-slide {
+  0% {
+    transform: translateX(-300px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0); 
+    opacity: 1;
+  }
 }
