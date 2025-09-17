@@ -121,16 +121,6 @@
   transform: translateY(30px);
 }
 
-/* .customize-ha .aos-custom-fade-up-5px [data-aos='fade-up'] {
-  transform: translateY(10px);
-  opacity: 0;
-}
-
-.customize-ha .aos-custom-fade-up-5px [data-aos='fade-up'] {
-  transform: translateY(10px);
-  opacity: 1;
-} */
-
 /* custom-anitaion */
 
 .right-slide-animation {
@@ -162,3 +152,5 @@
     opacity: 1;
   }
 }
+
+

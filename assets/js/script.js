@@ -106,4 +106,38 @@ $('.testiomonial-carousel').owlCarousel({
           items:2
       },
   }
-})
+});
+
+// faq icon costomize
+$(document).ready(function() {
+  $('.faq-heading-btn').on('click', function() {
+      const $button = $(this);
+      const targetId = $button.data('accordion-target');
+      const $targetPanel = $(targetId);
+      const $icon = $button.find('.custom-icon');
+      const isExpanded = $button.attr('aria-expanded') === 'true';
+
+      // অন্য অ্যাকর্ডিয়নগুলো বন্ধ করা
+      $('.faq-heading-btn').not($button).each(function() {
+          const $otherButton = $(this);
+          const otherTargetId = $otherButton.data('accordion-target');
+          const $otherTargetPanel = $(otherTargetId);
+          const $otherIcon = $otherButton.find('.custom-icon');
+
+          $otherTargetPanel.slideUp(300); // 300ms ট্রানজিশন সহ স্লাইড আপ
+          $otherButton.attr('aria-expanded', 'false');
+          $otherIcon.removeClass('fa-arrow-up').addClass('fa-angle-down');
+      });
+
+      // বর্তমান অ্যাকর্ডিয়ন টগল করা
+      $targetPanel.slideToggle(300); // 300ms ট্রানজিশন সহ স্লাইড টগল
+      $button.attr('aria-expanded', !isExpanded);
+
+      // আইকন পরিবর্তন করা
+      if (isExpanded) {
+          $icon.removeClass('fa-arrow-up').addClass('fa-angle-down');
+      } else {
+          $icon.removeClass('fa-angle-down').addClass('fa-arrow-up');
+      }
+  });
+});
