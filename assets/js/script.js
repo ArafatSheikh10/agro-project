@@ -3,7 +3,7 @@ $(document).ready(function() {
   // preloder-start
 
   $(window).on('load', function() {
-    $('#preloader').delay(1000).fadeOut(5000, function() {
+    $('#preloader').delay(500).fadeOut(2000, function() {
       $(this).remove(); 
     });
   });
