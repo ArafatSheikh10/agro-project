@@ -101,6 +101,24 @@
   color: #84cc16;
 }
 
+/* Mobile navigation dropdown styles */
+
+/* Clickable dropdown styles */
+.navigation-bar li.dropdown-active > ul {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.navigation-bar li.dropdown-active > a i {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.navigation-bar li > a i {
+  transition: transform 0.3s ease;
+}
+
 /* custom-fade */
 
 .customize-fade .aos-custom-fade-up {

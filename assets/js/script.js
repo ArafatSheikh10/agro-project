@@ -30,6 +30,30 @@ $(document).ready(function() {
     $(".navigation-bar li a").removeClass("active");
     $(this).addClass("active");
   })
+  $(document).ready(function() {
+    $(".navigation-bar li").has("ul").find("> a").click(function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const $parentLi = $(this).parent();
+        const $dropdown = $parentLi.find("> ul");
+        const $allLi = $(".navigation-bar li");
+        
+        $allLi.not($parentLi).removeClass("dropdown-active");
+        $allLi.find("ul").not($dropdown).removeClass("dropdown-open");
+        
+        $parentLi.toggleClass("dropdown-active");
+        $dropdown.toggleClass("dropdown-open");
+    });
+
+    $(document).click(function(e) {
+        if (!$(e.target).closest(".navigation-bar li").length) {
+            $(".navigation-bar li").removeClass("dropdown-active");
+            $(".navigation-bar li ul").removeClass("dropdown-open");
+        }
+    });
+});
+
 
 // Alternative - শুধু autoplay direction change করুন, carousel destroy করবেন না
 let isRTL = true;
